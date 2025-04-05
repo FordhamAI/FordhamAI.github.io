@@ -43,6 +43,7 @@
             justify-content: center;
         }
 
+        /* Unchanged styles for other sections */
         .header {
             background: #1A3C5A;
             padding: 20px 0;
@@ -90,6 +91,7 @@
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
         }
+
         .down-btn {
             position: absolute;
             bottom: 20px;
@@ -158,15 +160,16 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Updated "Who?" Section Styles */
         .overview {
-            padding: 40px 0;
+            padding: 38px 0;
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
         }
 
         .overview h2 {
-            font-size: 28px;
-            margin-bottom: 30px;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            margin-bottom: 25px;
             color: #1A3C5A;
             font-weight: 600;
             position: relative;
@@ -187,19 +190,38 @@
         .cards {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: nowrap; /* Ensures buttons stay horizontal */
+            overflow-x: auto; /* Adds horizontal scrolling on small screens */
+            padding: 10px 0;
+            scrollbar-width: thin; /* For Firefox */
+            -ms-overflow-style: none; /* For IE/Edge */
+        }
+
+        .cards::-webkit-scrollbar {
+            height: 8px; /* Custom scrollbar for Webkit browsers */
+        }
+
+        .cards::-webkit-scrollbar-thumb {
+            background: #45C8F1;
+            border-radius: 4px;
+        }
+
+        .cards::-webkit-scrollbar-track {
+            background: #F5F7FA;
         }
 
         .card {
             background: #FFFFFF;
-            padding: 20px;
-            width: 200px;
+            padding: 15px;
+            min-width: clamp(150px, 20vw, 200px); /* Ensures cards shrink but stay readable */
             text-align: center;
             text-decoration: none;
             color: #3C4858;
             border: 1px solid #E0E4E9;
             border-radius: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0; /* Prevents cards from shrinking too much */
         }
 
         .card:hover {
@@ -208,20 +230,22 @@
         }
 
         .card img {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 5vw, 50px);
+            height: clamp(40px, 5vw, 50px);
             margin-bottom: 10px;
         }
 
         .card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 8px;
         }
 
         .card p {
             color: #45C8F1;
+            font-size: clamp(12px, 1.5vw, 14px);
         }
 
+        /* Unchanged styles for other sections */
         .main-desc {
             padding: 60px 0;
             background: #F5F7FA;
@@ -322,6 +346,12 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
             }
         }
     </style>
