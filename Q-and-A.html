@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to Us</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Your existing styles remain unchanged */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ::selection {
+            background: rgba(245, 96, 64, 0.7);
+            color: #FFFFFF;
+            border-radius: 5px;
+        }
+
+        img, a {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #3C4858;
+            line-height: 1.6;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png') repeat;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header {
+            background: #1A3C5A;
+            padding: 20px 0;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .logo {
+            font-size: 2vw;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: #45C8F1;
+        }
+
+        .form-container {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            margin: 120px auto;
+        }
+        
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input, .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        .consent-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .consent-group label {
+            font-weight: 600;
+            color: #333;
+            margin-left: 5px;
+        }
+        
+        .submit-button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Fordham Prep AI Club</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="use.html">Use</a></li>
+                    <li><a href="participate.html">Participate</a></li>
+                    <li><a href="Q-and-A.html">Q&A</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Talk to us</h2>
+        <form action="https://formspree.io/f/mzzejnbg" method="POST" id="contact-form">
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Question</label>
+                <textarea name="message" id="message" required></textarea>
+            </div>
+            <div class="consent-group">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">I consent to receiving an email</label>
+            </div>
+            <button type="submit" class="submit-button">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contact-form");
+            const submitButton = form.querySelector(".submit-button");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const consentCheckbox = document.getElementById("consent");
+                if (!consentCheckbox.checked) {
+                    alert("Please consent to receiving an email response before submitting.");
+                    return;
+                }
+
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+
+                const formData = new FormData(form);
+
+                fetch("https://formspree.io/f/mzzejnbg", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "return.html";
+                    } else {
+                        return response.json().then(data => {
+                            throw new Error(data.error || "Error sending question.");
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert(error.message);
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Send";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
