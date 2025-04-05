@@ -33,52 +33,22 @@
             background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png') repeat;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensure the body takes up the full viewport height */
+            min-height: 100vh;
             margin: 0;
         }
 
-        .header {
-            background: #1A3C5A;
-            padding: 20px 0;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header .container {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-        }
-
-        .logo {
-            font-size: 2vw;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .nav-menu a:hover {
-            color: #45C8F1;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .main-content {
-            flex: 1; /* Allow the main content to take up remaining space */
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -116,20 +86,6 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <a href="index.html" class="logo">Fordham Prep AI Club</a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="use.html">Use</a></li>
-                    <li><a href="participate.html">Participate</a></li>
-                    <li><a href="Q-and-A.html">Q&A</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-
     <div class="main-content">
         <div class="message-container">
             <h2>Message was sent Successfully!</h2>
