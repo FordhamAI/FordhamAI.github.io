@@ -187,7 +187,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.ok) {
-                        window.location.href = "contactUsReturn.html";
+                        window.location.href = "return.html";
                     } else {
                         throw new Error(data.error || "Error sending message.");
                     }
