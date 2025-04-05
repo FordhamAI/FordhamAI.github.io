@@ -31,6 +31,10 @@
             color: #3C4858;
             line-height: 1.6;
             background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png') repeat;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
 
         .container {
@@ -43,163 +47,50 @@
             justify-content: center;
         }
 
-        .header {
-            background: #1A3C5A;
-            padding: 20px 0;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header .container {
+        .main-content {
+            flex: 1;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-direction: row;
         }
 
-        .logo {
-            font-size: 2vw;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .nav-menu a:hover {
-            color: #45C8F1;
-        }
-
-        .form-container {
+        .message-container {
             background-color: #f9f9f9;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
             text-align: center;
-            margin: 120px auto;
+            max-width: 400px;
+            width: 100%;
         }
-        
-        .form-container h2 {
+
+        .message-container h2 {
             margin-bottom: 20px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            margin-bottom: 5px;
-            font-weight: 600;
             color: #333;
         }
-        
-        .form-group input, .form-group textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            height: 100px;
-        }
-        
-        .submit-button {
+
+        .return-button {
             background-color: #000;
             color: #fff;
-            padding: 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 100%;
             font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .return-button:hover {
+            background-color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <a href="index.html" class="logo">Fordham Prep AI Club</a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="use.html">Use</a></li>
-                    <li><a href="participate.html">Participate</a></li>
-                    <li><a href="Q-and-A.html">Q&A</a></li>
-                </ul>
-            </nav>
+    <div class="main-content">
+        <div class="message-container">
+            <h2>Message was sent Successfully!</h2>
+            <button class="return-button" onclick="window.location.href='index.html';">Return to Home</button>
         </div>
     </div>
-
-    <div class="form-container">
-        <h2>Talk to us</h2>
-        <form action="https://formspree.io/f/mrbpywvv" method="POST" id="contact-form">
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea name="message" id="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send</button>
-        </form>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contact-form");
-            const submitButton = form.querySelector(".submit-button");
-
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                submitButton.disabled = true;
-                submitButton.textContent = "Sending...";
-
-                const formData = new FormData(form);
-
-                fetch("https://formspree.io/f/mrbpywvv", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        window.location.href = "contactUsReturn.html";
-                    } else {
-                        throw new Error(data.error || "Error sending message.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert(error.message);
-                    submitButton.disabled = false;
-                    submitButton.textContent = "Send";
-                });
-            });
-        });
-    </script>
 </body>
 </html>
