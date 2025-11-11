@@ -26,7 +26,6 @@
             box-sizing: border-box;
         }
         body {
-            /* Adjust body to stack content vertically */
             background: var(--gradient);
             display: flex;
             flex-direction: column;
@@ -136,8 +135,8 @@
         }
         .carousel-icon-container {
             display: flex;
-            height: 50px;
-            width: 50px;
+            height: 70px;
+            width: 70px;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
@@ -145,8 +144,8 @@
             background-color: transparent;
         }
         .carousel-icon {
-            height: 30px;
-            width: 30px;
+            height: 100px;
+            width: 100px;
             color: #060010;
         }
         .carousel-item-content {
@@ -189,7 +188,7 @@
         }
         .learn-more {
             position: absolute; 
-            left: 50%; bottom: 2vh; 
+            left: 50%; bottom: 5vh; 
             transform: translateX(-50%); 
             width: 200px; height: 5vh;    
             background: rgba(255, 255, 255, 0.15); 
@@ -250,6 +249,55 @@
             color: var(--font-dull);
             padding-bottom: 40px;
         }
+        .links {
+            width: 100%; 
+            padding: 80px 10vw; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 0; 
+            flex-wrap: wrap; 
+        }
+        .link-boxes-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 50px; 
+            padding-top: 20px; 
+        }
+        .link-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; 
+            color: var(--font-light);
+            width: 150px; height: 150px;
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 15px; 
+            backdrop-filter: blur(10px); 
+            border: 1px solid var(--border);
+        
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .link-box:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); 
+        }
+
+        .link-box h3 {
+            margin: 10px 0 0 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .link-icon {
+            font-size: 48px; 
+            color: var(--font-light);
+        }
     </style>
 </head>
 <body>
@@ -282,7 +330,21 @@
             </p>
         </div>
     </div>
-    
+    <div class="links">
+        <h2 class="content-title">Links</h2>
+        <hr class="content-separator">
+        <div class="link-boxes-container"> 
+            <a href="#" class="link-box">
+                <span class="material-symbols-outlined link-icon">photo_camera</span>
+                <h3>Instagram</h3>
+            </a>
+            <a href="#" class="link-box">
+                <span class="material-symbols-outlined link-icon">code</span>
+                <h3>GitHub</h3>
+            </a>
+        </div>
+    </div>
     <script src="carousel.js"></script>
+    <script></script>
 </body>
 </html>
