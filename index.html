@@ -13,12 +13,11 @@
             /*body*/
             --gradient: linear-gradient(135deg, #000000, #2b2b2b);
             /* Colors */
-            --dark: #0a0a0a;
-            --light: #1a1a2e;
-            --accent-dark: #16213e;
-            --accent-light: #0f3450;
+            --dark: #0d0716;
             --border: rgba(155, 153, 153, 0.25);
+            --border-light: #555;
             /* Fonts */
+            --font-highlight: #668aa5;
             --font-light: #e0e8ff; 
             --font-dull: #bec6de;
         }
@@ -47,12 +46,35 @@
             z-index: 10;
         }
         .nav-menu {
-            width: 50%;
+            width: 30%;
             height: 90%;    
             background: rgba(255, 255, 255, 0.15); 
             border-radius: 999px; 
             backdrop-filter: blur(12px); 
-            border: 1px solid var(--border); 
+            border: 1px solid var(--border);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .nav-list {
+            display: flex;
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--font-light);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 999px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-link:hover {
+            background: transparent; 
+            color: var(--font-highlight);
         }
         .start {
             height: 100vh; 
@@ -72,13 +94,11 @@
             align-self: center; 
             gap: 10px;
         }
-
         .start-title {
             width: auto; 
             font-family: "Momo Trust Display", sans-serif;
             font-weight: 400; 
             font-size: 4rem; 
-            font-style: normal; 
             color: var(--font-light);
             line-height: 1; 
         }
@@ -87,7 +107,6 @@
             font-family: "Momo Trust Display", sans-serif;
             font-weight: 200; 
             font-size: 2rem; 
-            font-style: normal; 
             color: var(--font-dull);
             line-height: 1;
         }
@@ -98,11 +117,10 @@
             align-items: center;
             align-self: center; 
         }
-        
         .carousel-container {
             position: relative;
             overflow: hidden;
-            border: 1px solid #555;
+            border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 16px;
             --outer-r: 24px;
@@ -119,9 +137,9 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
-            border: 1px solid #555;
+            border: 1px solid var(--border-light);
             border-radius: calc(var(--outer-r) - var(--p-distance));
-            background-color: #0d0716;
+            background-color: var(--dark);
             overflow: hidden;
             cursor: grab;
         }
@@ -180,7 +198,7 @@
             width: 8px;
             border-radius: 50%;
             cursor: pointer;
-            background-color: #555;
+            background-color: var(--border-light);
             transition: background-color 150ms, transform 150ms;
         }
         .carousel-indicator.active {
@@ -188,7 +206,7 @@
         }
         .learn-more {
             position: absolute; 
-            left: 50%; bottom: 5vh; 
+            left: 50%; bottom: 3vh; 
             transform: translateX(-50%); 
             width: 200px; height: 5vh;    
             background: rgba(255, 255, 255, 0.15); 
@@ -207,7 +225,6 @@
             transform: translate(-50%, -5px); 
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); 
         }
-        
         .content {
             width: 100%; 
             padding: 80px 10vw; 
@@ -217,7 +234,6 @@
             align-items: flex-start;
             gap: 50px; 
         }
-
         .content-block {
             display: flex;
             flex-direction: column;
@@ -226,10 +242,9 @@
             flex: 1;
             text-align: center;
         }
-
         .content-title {
             font-family: "Momo Trust Display", sans-serif;
-            font-weight: 400; font-size: 3rem; font-style: normal; 
+            font-weight: 400; font-size: 3rem; 
             color: var(--font-light);
             margin-bottom: 20px;
         }
@@ -282,28 +297,32 @@
         
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .link-box:hover {
             transform: translateY(-8px); 
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); 
         }
-
         .link-box h3 {
             margin: 10px 0 0 0;
             font-weight: 600;
             font-size: 1.2rem;
         }
-
         .link-icon {
-            font-size: 48px; 
-            color: var(--font-light);
+            width: 32px; 
+            height: 32px;
+            object-fit: contain; 
         }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="nav-menu">
-
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="" class="nav-link" onclick="contact()">Contact</a></li>
+                    <li><a href="" class="nav-link" onclick="creation()">Creations</a></li>
+                    <li><a href="" class="nav-link" onclick="dev()">Devlogs</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
     <div class="start">
@@ -312,7 +331,9 @@
             <div class="start-text">The club dedicated to developing and integrating safe artificial intelligence.</div>
         </div>
         <div class="Carousel"></div>
-        <div class="learn-more"><span class="material-symbols-outlined">arrow_downward_alt</span>Learn more</div>
+        <div class="learn-more" id="learnMoreButton">
+            <span class="material-symbols-outlined">arrow_downward_alt</span>Learn more
+        </div>
     </div>
     <div class="content">
         <div class="content-block">
@@ -334,17 +355,46 @@
         <h2 class="content-title">Links</h2>
         <hr class="content-separator">
         <div class="link-boxes-container"> 
-            <a href="#" class="link-box">
-                <span class="material-symbols-outlined link-icon">photo_camera</span>
-                <h3>Instagram</h3>
+            <a href="#" class="link-box" onclick="inst()">
+                <img src="assets/instagram.png" alt="Instagram Logo" class="link-icon">
+                <h3>Instagram</h3> 
             </a>
-            <a href="#" class="link-box">
-                <span class="material-symbols-outlined link-icon">code</span>
+            <a href="#" class="link-box" onclick="git()">
+                <img src="assets/github.png" alt="GitHub Logo" class="link-icon">
                 <h3>GitHub</h3>
             </a>
         </div>
     </div>
     <script src="carousel.js"></script>
-    <script></script>
+    <script>
+        function scroll() {
+            window.scrollBy({
+                top: window.innerHeight, 
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('learnMoreButton');
+            if (button) {
+                button.addEventListener('click', scroll);
+            }
+        });
+        function inst() {
+            window.location.href="https://www.instagram.com/fordhamprepai/?hl=en";
+        }
+        function git() {
+            window.location.href="https://github.com/FordhamAI/FordhamAI.github.io";
+        }
+        function contact() {
+            window.location.href=""
+        }
+        function creation() {
+            window.location.href=""
+        }
+        function dev() {
+            window.location.href=""
+        }
+    </script>
 </body>
 </html>
