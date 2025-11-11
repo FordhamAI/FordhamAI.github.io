@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="assets/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         :root {
             /*body*/
@@ -25,9 +26,11 @@
             box-sizing: border-box;
         }
         body {
+            /* Adjust body to stack content vertically */
             background: var(--gradient);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -61,7 +64,7 @@
             justify-content: space-between;
             align-items: center;            
             padding-left: 10vw;              
-            padding-right: 10vw;             
+            padding-right: 10vw;
         }
         .start-left {
             display: flex;
@@ -96,6 +99,7 @@
             align-items: center;
             align-self: center; 
         }
+        
         .carousel-container {
             position: relative;
             overflow: hidden;
@@ -111,7 +115,7 @@
         }
         .carousel-item {
             position: relative;
-            display: flex;
+            display: flex; 
             flex-shrink: 0;
             flex-direction: column;
             align-items: flex-start;
@@ -125,29 +129,6 @@
         .carousel-item:active {
             cursor: grabbing;
         }
-        .carousel-container.round {
-            border: 1px solid #555;
-        }
-        .carousel-item.round {
-            background-color: #0d0716;
-            position: relative;
-            bottom: 0.1em;
-            border: 1px solid #555;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .carousel-item-header.round {
-            padding: 0;
-            margin: 0;
-        }
-        .carousel-indicators-container.round {
-            position: absolute;
-            z-index: 2;
-            bottom: 3em;
-            left: 50%;
-            transform: translateX(-50%);
-        }
         .carousel-item-header {
             margin-bottom: 16px;
             padding: 20px;
@@ -155,8 +136,8 @@
         }
         .carousel-icon-container {
             display: flex;
-            height: 28px;
-            width: 28px;
+            height: 50px;
+            width: 50px;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
@@ -164,8 +145,8 @@
             background-color: transparent;
         }
         .carousel-icon {
-            height: 16px;
-            width: 16px;
+            height: 30px;
+            width: 30px;
             color: #060010;
         }
         .carousel-item-content {
@@ -206,6 +187,69 @@
         .carousel-indicator.active {
             background-color: #fff;
         }
+        .learn-more {
+            position: absolute; 
+            left: 50%; bottom: 2vh; 
+            transform: translateX(-50%); 
+            width: 200px; height: 5vh;    
+            background: rgba(255, 255, 255, 0.15); 
+            border-radius: 999px; 
+            backdrop-filter: blur(12px); 
+            border: 1px solid var(--border); 
+            display: flex; justify-content: center; align-items: center;
+            color: var(--font-light);
+            font-weight: 400;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 5px;
+        }
+        .learn-more:hover {
+            transform: translate(-50%, -5px); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); 
+        }
+        
+        .content {
+            width: 100%; 
+            padding: 80px 10vw; 
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            align-items: flex-start;
+            gap: 50px; 
+        }
+
+        .content-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .content-title {
+            font-family: "Momo Trust Display", sans-serif;
+            font-weight: 400; font-size: 3rem; font-style: normal; 
+            color: var(--font-light);
+            margin-bottom: 20px;
+        }
+        .content-separator {
+            width: 70%; 
+            max-width: 300px;
+            height: 1px;
+            background-color: var(--border); 
+            border: none;
+            margin-bottom: 40px;
+        }
+        .content-paragraph {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--font-dull);
+            padding-bottom: 40px;
+        }
     </style>
 </head>
 <body>
@@ -217,10 +261,28 @@
     <div class="start">
         <div class="start-left">
             <div class="start-title">Fordham AI</div>
-            <div class="start-text">The club didicated to develping and intigrating safe artifical intelligence.</div>
+            <div class="start-text">The club dedicated to developing and integrating safe artificial intelligence.</div>
         </div>
         <div class="Carousel"></div>
+        <div class="learn-more"><span class="material-symbols-outlined">arrow_downward_alt</span>Learn more</div>
     </div>
+    <div class="content">
+        <div class="content-block">
+            <h2 class="content-title">Who We Are</h2>
+            <hr class="content-separator">
+            <p class="content-paragraph">
+                Fordham Prep AI is an artificial intelligence model intended to support students in the English department at Fordham Prep. It’s an accessible platform where students, English teachers, and tech enthusiasts at Fordham Prep can use to accelerate their learning. In order to access this AI you must be a student at Fordham Prep.
+            </p>
+        </div>
+        <div class="content-block">
+            <h2 class="content-title">Built On</h2>
+            <hr class="content-separator">
+            <p class="content-paragraph">
+                Built on the OpenAI API, giving Fordham Prep AI acsess to the latest features and latest ChatGPT models, allowing FP AI to have acsess to the latest AI technology and delivering it to Fordham Prep in a safe way.
+            </p>
+        </div>
+    </div>
+    
     <script src="carousel.js"></script>
 </body>
 </html>
