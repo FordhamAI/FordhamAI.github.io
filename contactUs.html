@@ -3,203 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk to Us</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Contact Us - FP AI</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
+        :root {
+            /*body*/
+            --gradient: linear-gradient(135deg, #000000, #2b2b2b);
+            /* Colors */
+            --dark: #0d0716;
+            --border: rgba(155, 153, 153, 0.25);
+            --border-light: #555;
+            --container: rgba(255, 255, 255, 0.08);
+            /* Fonts */
+            --font-highlight: #668aa5;
+            --font-light: #e0e8ff; 
+            --font-dull: #bec6de;
+        }
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-        
-        ::selection {
-            background: rgba(245, 96, 64, 0.7);
-            color: #FFFFFF;
-            border-radius: 5px;
-        }
-
-        img, a {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #3C4858;
-            line-height: 1.6;
-            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png') repeat;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 100%;
+            background: var(--gradient);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-        }
-
-        .header {
-            background: #1A3C5A;
-            padding: 20px 0;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            flex-direction: row;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
-
-        .logo {
-            font-size: 2vw;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            list-style: none;
+        .header {
+            position: fixed;
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            top: 0; left: 0; right: 0;margin: 0;padding: 0;width: 100%;
+            box-sizing: border-box;
+            height: 7vh;
+            z-index: 10;
         }
-
-        .nav-menu a {
-            color: white;
+        .nav-menu {
+            width: 15%; 
+            height: 90%;    
+            background: rgba(255, 255, 255, 0.15); 
+            border-radius: 999px; 
+            backdrop-filter: blur(12px); 
+            border: 1px solid var(--border);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .nav-list {
+            display: flex;
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+        }
+        .nav-link {
             text-decoration: none;
-            font-size: 16px;
+            color: var(--font-light);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 999px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-
-        .nav-menu a:hover {
-            color: #45C8F1;
+        .nav-link:hover {
+            background: transparent; 
+            color: #668aa5; 
         }
-
-        .form-container {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
+        .start {
+            height: 100vh; 
+            width: 100vw; 
+            background: transparent;
+            position: relative;
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-start; 
+            align-items: center;            
+            padding-top: 15vh;
+        }
+        .content-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px; 
+            width: 90%;
             text-align: center;
-            margin: 120px auto;
         }
-        
-        .form-container h2 {
+        .content-title {
+            font-family: "Momo Trust Display", sans-serif;
+            font-weight: 400; font-size: 3rem; 
+            color: var(--font-light);
             margin-bottom: 20px;
         }
+        .content-separator {
+            width: 70%; 
+            max-width: 300px;
+            height: 1px;
+            background-color: var(--border); 
+            border: none;
+            margin-bottom: 40px;
+        }
+        .content-paragraph {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--font-dull);
+            padding-bottom: 40px;
+        }
         
+        /* Contact Form Styles */
+        .contact-form {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            padding: 20px; 
+            background: var(--container);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
         .form-group {
             display: flex;
             flex-direction: column;
-            margin-bottom: 15px;
-            text-align: left;
+            align-items: flex-start;
         }
-        
+
         .form-group label {
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
+            color: var(--font-light);
+            font-weight: 400;
+            margin-bottom: 3px; 
+            font-size: 0.95rem; 
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px; 
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--container); 
+            color: var(--font-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem; 
+            outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
         
-        .form-group input, .form-group textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #668aa5; 
+            background-color: rgba(13, 7, 22, 0.8);
         }
-        
-        .form-group textarea {
+
+        .contact-form textarea {
             resize: vertical;
-            height: 100px;
+            min-height: 100px; 
         }
         
         .submit-button {
-            background-color: #000;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             width: 100%;
-            font-size: 1em;
+            padding: 12px; 
+            background: rgba(102, 138, 165, 0.7); 
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1rem; 
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #668aa5; 
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="container">
-            <a href="index.html" class="logo">Fordham Prep AI Club</a>
+        <div class="nav-menu">
             <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="use.html">Use</a></li>
-                    <li><a href="join.html">Join</a></li>
-                    <li><a href="q-and-a.html">Q&A</a></li>
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link" onclick="window.location.href = 'index.html'">Home</a></li>
                 </ul>
             </nav>
         </div>
     </div>
+    <div class="start">
+        <div class="content-block">
+            <h2 class="content-title">Contact Us</h2>
+            <hr class="content-separator">
+            
+            <form class="contact-form" action="https://formspree.io/f/xanayvyg" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-    <div class="form-container">
-        <h2>Talk to us</h2>
-        <form action="https://formspree.io/f/mrbpywvv" method="POST" id="contact-form">
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea name="message" id="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send</button>
-        </form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="_replyto" required>
+                    </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+            
+        </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contact-form");
-            const submitButton = form.querySelector(".submit-button");
-
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                submitButton.disabled = true;
-                submitButton.textContent = "Sending...";
-
-                const formData = new FormData(form);
-
-                fetch("https://formspree.io/f/mrbpywvv", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        window.location.href = "return.html";
-                    } else {
-                        throw new Error(data.error || "Error sending message.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert(error.message);
-                    submitButton.disabled = false;
-                    submitButton.textContent = "Send";
-                });
-            });
-        });
-    </script>
-</body>
+    </body>
 </html>
