@@ -45,10 +45,10 @@
 
         /* Unchanged styles for other sections */
         .header {
-            background: rgba(26, 60, 90, 0.3);
+            background: rgba(26, 60, 90, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(69, 200, 241, 0.3);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             padding: 20px 0;
             color: white;
@@ -68,15 +68,15 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg,
-                rgba(69, 200, 241, 0.1) 0%,
-                rgba(26, 60, 90, 0.05) 50%,
-                rgba(69, 200, 241, 0.1) 100%);
+                rgba(69, 200, 241, 0.15) 0%,
+                rgba(26, 60, 90, 0.1) 50%,
+                rgba(69, 200, 241, 0.15) 100%);
             z-index: 0;
             pointer-events: none;
         }
 
         .header.scrolled {
-            margin: 20px 20px 0 20px;
+            margin: 20px;
             border-radius: 24px;
             box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.35);
         }
@@ -119,6 +119,8 @@
             padding: 60px 0;
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
+            border-radius: 24px;
+            margin: 20px;
         }
 
         .down-btn {
@@ -280,6 +282,8 @@
             background: #F5F7FA;
             text-align: center;
             animation: fadeInUp 0.8s ease-out;
+            border-radius: 24px;
+            margin: 20px;
         }
 
         .main-desc h2 {
