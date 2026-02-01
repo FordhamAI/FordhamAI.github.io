@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Local Agent Ollama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ::selection {
+            background: rgba(59, 130, 246, 0.7);
+            color: #FFFFFF;
+            border-radius: 5px;
+        }
+
+        img, a {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #3C4858;
+            line-height: 1.6;
+            background: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png') repeat;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: #1A3C5A;
+            padding: 20px 0;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .logo {
+            font-size: 2vw;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: #45C8F1;
+        }
+
+        .content-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #1A3C5A;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #1A3C5A;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #45C8F1;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #3C4858;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        code {
+            background: #e8f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #1A3C5A;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        ol, ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight {
+            background: #e8f4f8;
+            border-left: 4px solid #45C8F1;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .contact-section {
+            background: #1A3C5A;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+            border-bottom: 2px solid #45C8F1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .email-link {
+            color: #45C8F1;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .step {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            background: #1A3C5A;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Fordham Prep AI Club</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="use.html">Use</a></li>
+                    <li><a href="join.html">Join</a></li>
+                    <li><a href="q-and-a.html">Q&A</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <h1>Support & Documentation</h1>
+
+        <div class="highlight">
+            <p><strong>Welcome to Local Agent!</strong> This extension brings AI-powered page analysis directly to your browser using Ollama, a local AI service running on your own machine. All processing happens locally - your data never leaves your computer.</p>
+        </div>
+
+        <h2>📥 Installing Ollama & Downloading Models</h2>
+
+        <h3>Step 1: Install Ollama</h3>
+        <div class="step">
+            <p><span class="step-number">1</span> Visit <a href="https://ollama.com" target="_blank">https://ollama.com</a></p>
+            <p><span class="step-number">2</span> Download Ollama for your operating system (macOS, Windows, or Linux)</p>
+            <p><span class="step-number">3</span> Run the installer and follow the installation prompts</p>
+            <p><span class="step-number">4</span> Verify installation by opening Terminal (macOS/Linux) or Command Prompt (Windows) and typing:</p>
+            <div class="code-block">ollama --version</div>
+        </div>
+
+        <h3>Step 2: Download AI Models</h3>
+        <div class="step">
+            <p>Ollama needs AI models to function. Here are some recommended models:</p>
+            
+            <p><strong>Recommended for beginners:</strong></p>
+            <ul>
+                <li><strong>Phi-3 Mini (3.8B)</strong> - Fast, lightweight, great for most tasks
+                    <div class="code-block">ollama pull phi3</div>
+                </li>
+                <li><strong>Llama 3.2 (3B)</strong> - Excellent balance of speed and quality
+                    <div class="code-block">ollama pull llama3.2</div>
+                </li>
+            </ul>
+
+            <p><strong>For more powerful responses:</strong></p>
+            <ul>
+                <li><strong>Llama 3.1 (8B)</strong> - More capable, requires more RAM
+                    <div class="code-block">ollama pull llama3.1:8b</div>
+                </li>
+                <li><strong>Mistral (7B)</strong> - Great for technical content
+                    <div class="code-block">ollama pull mistral</div>
+                </li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Note:</strong> Model downloads can be 2-5GB in size. Ensure you have sufficient disk space and a stable internet connection.
+            </div>
+        </div>
+
+        <h3>Step 3: Start Ollama with CORS Enabled</h3>
+        <div class="step">
+            <p>The extension requires Ollama to allow connections from Chrome. Start Ollama with CORS enabled:</p>
+            
+            <p><strong>macOS/Linux:</strong></p>
+            <div class="code-block">OLLAMA_HOST=0.0.0.0:11434 OLLAMA_ORIGINS='chrome-extension://*' ollama serve</div>
+            
+            <p><strong>Windows (PowerShell):</strong></p>
+            <div class="code-block">$env:OLLAMA_HOST="0.0.0.0:11434"
+$env:OLLAMA_ORIGINS="chrome-extension://*"
+ollama serve</div>
+        </div>
+
+        <h2>🚀 How to Use the Extension</h2>
+
+        <h3>Getting Started</h3>
+        <div class="step">
+            <p><span class="step-number">1</span> <strong>Install the extension</strong> from the Chrome Web Store</p>
+            <p><span class="step-number">2</span> <strong>Make sure Ollama is running</strong> with CORS enabled (see above)</p>
+            <p><span class="step-number">3</span> <strong>Click the extension icon</strong> in your browser toolbar to open the side panel</p>
+            <p><span class="step-number">4</span> <strong>Check the connection status</strong> - it should show "Ollama Connected" with a green indicator</p>
+        </div>
+
+        <h3>Using @ Mentions to Reference Tabs</h3>
+        <div class="step">
+            <p>The extension's powerful feature is the ability to reference specific browser tabs in your questions:</p>
+            
+            <ol>
+                <li><strong>Type @</strong> in the input field</li>
+                <li><strong>Autocomplete appears</strong> showing all your open tabs</li>
+                <li><strong>Select a tab</strong> using arrow keys (↑/↓) and press Tab or Enter</li>
+                <li><strong>Reference multiple tabs</strong> in one question</li>
+            </ol>
+
+            <div class="highlight">
+                <p><strong>Example queries:</strong></p>
+                <ul>
+                    <li><code>Summarize @"Research Article"</code></li>
+                    <li><code>Compare @"Product A" with @"Product B"</code></li>
+                    <li><code>How does @"Assignment Rubric" apply to @"My Essay"?</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Keyboard Shortcuts</h3>
+        <div class="step">
+            <ul>
+                <li><strong>Enter</strong> - Send your message</li>
+                <li><strong>Shift + Enter</strong> - New line in message</li>
+                <li><strong>↑ / ↓</strong> - Navigate autocomplete suggestions</li>
+                <li><strong>Tab or Enter</strong> - Select autocomplete suggestion</li>
+                <li><strong>Esc</strong> - Close autocomplete</li>
+            </ul>
+        </div>
+
+        <h3>Starting a New Chat</h3>
+        <div class="step">
+            <p>Click the <strong>"New Chat"</strong> button in the header to clear the conversation history and start fresh.</p>
+        </div>
+
+        <h3>Changing Models</h3>
+        <div class="step">
+            <p>Use the <strong>Model dropdown</strong> at the bottom of the side panel to switch between installed Ollama models. Each model has different capabilities and speed.</p>
+        </div>
+
+        <h2>🔧 Troubleshooting</h2>
+
+        <h3>Extension shows "Ollama Disconnected"</h3>
+        <ul>
+            <li>Make sure Ollama is running</li>
+            <li>Verify CORS is enabled (see Step 3 above)</li>
+            <li>Click the "Reconnect" button (circular arrow icon)</li>
+            <li>Check that Ollama is running on port 11434</li>
+        </ul>
+
+        <h3>"No models found" error</h3>
+        <ul>
+            <li>Download at least one model using <code>ollama pull</code> (see Step 2 above)</li>
+            <li>Restart Ollama after downloading models</li>
+            <li>Click "Reconnect" in the extension</li>
+        </ul>
+
+        <h3>Tab content not extracting</h3>
+        <ul>
+            <li>Some pages (chrome://, extension pages) cannot be accessed for security reasons</li>
+            <li>Try refreshing the tab and trying again</li>
+            <li>Make sure you're using @ mentions to reference tabs</li>
+        </ul>
+
+        <h3>Slow responses</h3>
+        <ul>
+            <li>Switch to a smaller model (phi3 or llama3.2:3b)</li>
+            <li>Close other applications to free up RAM</li>
+            <li>Consider using a GPU-accelerated model if you have a compatible GPU</li>
+        </ul>
+
+        <h2>🔒 Privacy & Security</h2>
+        <div class="highlight">
+            <p><strong>Your data stays private:</strong></p>
+            <ul>
+                <li>All AI processing happens locally on your machine</li>
+                <li>No data is sent to external servers</li>
+                <li>Content is only extracted from tabs you explicitly reference with @ mentions</li>
+                <li>Conversation history is stored locally in your browser</li>
+            </ul>
+        </div>
+
+        <h2>📚 Additional Resources</h2>
+        <ul>
+            <li><a href="https://ollama.com/library" target="_blank">Ollama Model Library</a> - Browse all available models</li>
+            <li><a href="https://github.com/ollama/ollama" target="_blank">Ollama Documentation</a> - Learn more about Ollama</li>
+            <li><a href="https://github.com/seanpategan/LocalAgent-Ollama/tree/main" target="_blank">Extension Source Code</a> - View the open source code</li>
+        </ul>
+
+        <div class="contact-section">
+            <h2>📧 Need Help?</h2>
+            <p>If you have questions, found a bug, or need assistance, please contact us:</p>
+            <a href="mailto:sean.pat.egan@gmail.com" class="email-link">sean.pat.egan@gmail.com</a>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">We typically respond within 24-48 hours.</p>
+        </div>
+    </div>
+</body>
+</html>
