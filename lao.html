@@ -290,11 +290,10 @@
             <p>The extension requires Ollama to allow connections from Chrome. Start Ollama with CORS enabled:</p>
             
             <p><strong>macOS/Linux:</strong></p>
-            <div class="code-block">OLLAMA_HOST=0.0.0.0:11434 OLLAMA_ORIGINS='chrome-extension://*' ollama serve</div>
+            <div class="code-block">launchctl setenv OLLAMA_ORIGINS "*"</div>
             
             <p><strong>Windows (PowerShell):</strong></p>
-            <div class="code-block">"setx OLLAMA_ORIGINS "*""
-ollama serve</div>
+            <div class="code-block">etx OLLAMA_ORIGINS "*"</div>
         </div>
 
         <h2>🚀 How to Use the Extension</h2>
